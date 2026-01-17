@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core */
+  --color-background: #020617; /* Almost black */
+  --color-foreground: #F8FAFC; /* Soft white */
+
+  /* Surfaces */
+  --color-card: #0B1220;       /* Elevated surface */
+  --color-surface: #0F172A;    /* Subtle contrast */
+  --color-border: #1E293B;     /* Soft border */
+
+  /* Primary (Purple Accent) */
+  --color-primary: #A78BFA;
+  --color-primary-foreground: #020617;
+
+  /* Secondary (Muted Purple) */
+  --color-secondary: #1E1B4B;
+  --color-secondary-foreground: #EDE9FE;
+
+  /* Muted text */
+  --color-muted: #111827;
+  --color-muted-foreground: #94A3B8;
+
+  /* Highlight / Hover */
+  --color-highlight: #F472B6;
+
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+
+    
+  }
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+
+    
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in{
+    from{
+ opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+    }
+    to{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+   .animate-fade-in{
+      animation: fade-in 0.8s ease-out both;
+    }
+    
+}
